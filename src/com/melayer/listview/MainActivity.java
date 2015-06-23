@@ -13,8 +13,8 @@ import android.widget.ListView;
 public class MainActivity extends Activity {
 
 	private ArrayList<String> listData = new ArrayList<String>();
-	//private ListView listView;
-	private GridView gridView;
+	private ListView listView;
+	//private GridView gridView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +27,15 @@ public class MainActivity extends Activity {
 		listData.add("US");
 		listData.add("AUS");
 
-		// MyAdapter adapter = new MyAdapter(this,listData);
+		 MyAdapter adapter = new MyAdapter(this,listData);
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, listData);
+	/*	ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+				android.R.layout.simple_list_item_1, listData);*/
 
-		/*listView = (ListView) findViewById(R.id.listView);
-		listView.setAdapter(adapter);*/
+		listView = (ListView) findViewById(R.id.listView);
+		listView.setAdapter(adapter);
 		
-		gridView = (GridView) findViewById(R.id.listView);
-		gridView.setAdapter(adapter);
+		/*gridView = (GridView) findViewById(R.id.listView);
+		gridView.setAdapter(adapter);*/
 	}
 }

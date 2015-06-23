@@ -2,11 +2,15 @@ package com.melayer.adapter;
 
 import java.util.ArrayList;
 
+import com.melayer.listview.R;
+
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MyAdapter extends BaseAdapter {
@@ -15,6 +19,8 @@ public class MyAdapter extends BaseAdapter {
 	private Context context;
 	private ArrayList<String> listData;
 
+	private LayoutInflater inflater;
+
 	public MyAdapter(Context context, ArrayList<String> listData) {
 
 		this.context = context;
@@ -22,6 +28,9 @@ public class MyAdapter extends BaseAdapter {
 
 		params = new LayoutParams(LayoutParams.MATCH_PARENT,
 				LayoutParams.WRAP_CONTENT);
+
+		inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
@@ -42,10 +51,17 @@ public class MyAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		TextView text = new TextView(context);
+		/*TextView text = new TextView(context);
 		text.setLayoutParams(params);
-		text.setText(listData.get(position));
+		text.setText(listData.get(position));*/
+		
+		View v  = inflater.inflate(R.layout.my_compound_view, null, false);
+		
+		TextView txt = (TextView) v.findViewById(R.id.txtView);
+		txt.setText(listData.get(position));
+		
+		ImageView img = (ImageView) v.findViewById(R.id.imgView);
 
-		return text;
+		return v;
 	}
 }
